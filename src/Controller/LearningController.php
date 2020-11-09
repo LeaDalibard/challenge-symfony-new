@@ -35,19 +35,22 @@ class LearningController extends AbstractController
         if ($this->session->get('name')) {
             $name = $this->session->get('name');
             return $this->render('learning/about-me.html.twig', ['name' => $name]);
+        } else {
+            return $this->forward('App\Controller\LearningController::showMyName');
         }
-        else { $name = 'Unknown';
-        return $this->render('learning/show-my-name.html.twig', ['name' => $name]);}
 
     }
+
 
     /**
      * @Route("/show-my-name", name="show-my-name")
      */
-    public function showMyName(): Response
+    public
+    function showMyName(): Response
     {
         if ($this->session->get('name')) {
-            $name = $this->session->get('name');} else {
+            $name = $this->session->get('name');
+        } else {
             $name = 'Unknown';
         }
 
@@ -59,9 +62,10 @@ class LearningController extends AbstractController
      * @Route("/change-my-name",name="change-my-name", methods="POST")
      */
 
-    //path should be put in method in the form
+//path should be put in method in the form
 
-    public function changeMyName(): RedirectResponse
+    public
+    function changeMyName(): RedirectResponse
     {
         if ($_POST['name']) {
             $name = $_POST['name'];
@@ -70,14 +74,14 @@ class LearningController extends AbstractController
         }
     }
 
-    //public function changeMyName(): Response
-    //    {
-    //        if ($_POST['name']) {
-    //            $name = $_POST['name'];
-    //            $this->session->set('name', $name);
-    //            return $this->render('learning/show-my-name.html.twig', ['name' => $this->session->get('name')]);
-    //        }
-    //    }
+//public function changeMyName(): Response
+//    {
+//        if ($_POST['name']) {
+//            $name = $_POST['name'];
+//            $this->session->set('name', $name);
+//            return $this->render('learning/show-my-name.html.twig', ['name' => $this->session->get('name')]);
+//        }
+//    }
 
 }
 

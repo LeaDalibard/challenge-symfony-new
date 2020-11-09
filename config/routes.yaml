@@ -1,3 +1,12 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+changeMyName:
+  path: change-my-name
+  controller: App\Controller\LearningController::changeMyName
+
+showMyName:
+    path: show-my-name
+    controller: App\Controller\LearningController::showMyName
+
