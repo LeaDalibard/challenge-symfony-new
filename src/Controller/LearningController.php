@@ -28,7 +28,7 @@ class LearningController extends AbstractController
     }
 
     /**
-     * @Route("/about-me", name="aboutMe")
+     * @Route("/about-becode", name="aboutMe")
      */
     public function aboutMe(): Response
     {
