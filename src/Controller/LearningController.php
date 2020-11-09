@@ -32,7 +32,13 @@ class LearningController extends AbstractController
      */
     public function aboutMe(): Response
     {
-        return $this->render('learning/about-me.html.twig');
+        if ($this->session->get('name')) {
+            $name = $this->session->get('name');
+            return $this->render('learning/about-me.html.twig', ['name' => $name]);
+        }
+        else { $name = 'Unknown';
+        return $this->render('learning/show-my-name.html.twig', ['name' => $name]);}
+
     }
 
     /**
@@ -55,15 +61,23 @@ class LearningController extends AbstractController
 
     //path should be put in method in the form
 
-    public function changeMyName(): Response
+    public function changeMyName(): RedirectResponse
     {
         if ($_POST['name']) {
             $name = $_POST['name'];
             $this->session->set('name', $name);
-            return $this->render('learning/show-my-name.html.twig', ['name' => $this->session->get('name')]);
+            return $this->redirectToRoute('show-my-name', ['name' => $this->session->get('name')]);
         }
     }
 
+    //public function changeMyName(): Response
+    //    {
+    //        if ($_POST['name']) {
+    //            $name = $_POST['name'];
+    //            $this->session->set('name', $name);
+    //            return $this->render('learning/show-my-name.html.twig', ['name' => $this->session->get('name')]);
+    //        }
+    //    }
 
 }
 
