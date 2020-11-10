@@ -1,1 +1,1 @@
-# challenge-symfony-new
+# challenge-mvc-twig
